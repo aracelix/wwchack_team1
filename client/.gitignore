@@ -1,0 +1,8 @@
+node_modules
+./dist
+.firebase
+.cache
+.vscode
+.babelrc
+.eslintrc
+.firebaserc

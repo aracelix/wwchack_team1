@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "2019-wwc-hackathon"
+    ],
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "react/jsx-one-expression-per-line": "allow"
+    },
+    "parser": "babel-eslint"
+}

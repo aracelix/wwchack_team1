@@ -1,0 +1,38 @@
+{
+  "name": "2019-wwc-hackathon",
+  "version": "1.0.0",
+  "description": "Gas, humidity, and weight monitor for your garbage.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel ./index.html --open",
+    "build": "parcel build ./index.html",
+    "clean": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "firebase-tools": "^7.4.0",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-redux": "7.1.1",
+    "redux": "4.0.4",
+    "redux-saga": "1.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/plugin-transform-spread": "^7.6.2",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6"
+  }
+}
