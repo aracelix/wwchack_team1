@@ -3,6 +3,8 @@ import {
     render
 } from 'react-dom';
 
-import App from './app/app';
+const App = () => (
+    <div>Hello, world!</div>
+);
 
 render( < App / > , document.getElementById('root'));
