@@ -1,8 +1,10 @@
 import React from 'react';
 import reduce from 'lodash/reduce';
-import map from 'lodash/map';
+import forEach from 'lodash/forEach';
 import { useSelector } from 'react-redux';
-import { Card, CardContent, Box } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Box from '@material-ui/core/Box';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
     XYPlot,
@@ -12,7 +14,8 @@ import {
     HorizontalGridLines,
     XAxis,
     YAxis,
-    DiscreteColorLegend
+    DiscreteColorLegend,
+    Crosshair
 } from 'react-vis';
 
 const Chart = () => {
@@ -21,13 +24,13 @@ const Chart = () => {
 
     let index = 0;
     const data = reduce(feed, (acc, measurement) => {
-        map(measurement, (value, key) => {
-            const coord = { x: index, y: value };
-            (acc[key] || (acc[key] = [])).push(coord);
-        })
-        index = index + 1;
-        return acc;
-    }, {});
+            forEach(measurement, (value, key) => {
+                const coord = { x: index, y: value };
+                (acc[key] || (acc[key] = [])).push(coord);
+            })
+            index = index + 1;
+            return acc;
+        }, {});
 
     const legendItems = [{
         title: "CO2",
@@ -42,17 +45,20 @@ const Chart = () => {
 
     return (
         <Box m={2}>
-            <Card className="card dashboard-card">
+            <Card className="card dashboard-card" style={{paddingTop: '3vh'}}>
                 <CardContent>
-                <FlexibleXYPlot stackBy="y">
+                <FlexibleXYPlot>
                         <XAxis />
                         <YAxis />
                         <VerticalGridLines />
                         <HorizontalGridLines />
-                        <DiscreteColorLegend items={legendItems} style={{position: 'absolute', left: '50px', top: '10px'}} />
-                        <VerticalBarSeries cluster="c02" color="#f79824" data={data.c02} />
-                        <VerticalBarSeries cluster="humidity" color="#ffd966" data={data.humidity} />
-                        <VerticalBarSeries cluster="weight" color="#33a1fd" data={data.weight} />
+                        <DiscreteColorLegend 
+                            items={legendItems} 
+                            orientation="horizontal"
+                            style={{position: 'absolute', left: '40px', top: '-2.5vh' }} />
+                        <VerticalBarSeries color="#f79824" data={data.c02} />
+                        <VerticalBarSeries color="#ffd966" data={data.humidity} />
+                        <VerticalBarSeries color="#33a1fd" data={data.weight} />
                 </FlexibleXYPlot>
                 </CardContent>
             </Card>
