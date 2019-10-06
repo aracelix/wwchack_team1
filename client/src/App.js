@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 
 import NavBar from './components/NavBar';
 import Chart from './components/Chart';
+import Alert from './components/Alert';
 import StatusCard from './components/StatusCard';
 import './styles/index.css';
 import rootReducer from './redux/rootReducer';
@@ -44,7 +45,7 @@ const InitApp = () => {
         <div>
             <NavBar />
             {!isMobile ? <Box p={3.5}/> : null}
-            <StatusCard/>
+            <Alert/>
             <Chart/>
         </div>
     );
