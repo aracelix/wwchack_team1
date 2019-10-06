@@ -1,5 +1,7 @@
 # Team 1 - Alfred
 
+https://wwc-hackathon.firebaseapp.com/
+
 ## Description
 
 Alfred is a smart recycle bin that pulls information from your recycling bin lie gas levels, humidity, and weight to help the user determine if they are following best recycling practices. The goal of the product is to help reduce the amount of recycling that is contaminated and eventually thrown into a landfill from poor recycling habits. 
