@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
     XYPlot,
-    makeWidthFlexible,
+    makeVisFlexible,
     VerticalBarSeries,
     VerticalGridLines,
     HorizontalGridLines,
@@ -45,6 +45,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const Chart = () => {
+    const FlexibleXYPlot = makeVisFlexible(XYPlot);
     const classes = useStyles();
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -182,22 +183,21 @@ const Chart = () => {
                     </div>
                 </Toolbar>
             </AppBar>
-            <Card>
+            <Card className="card dashboard-card">
                 <CardContent>
-                <XYPlot height={300} width={300}>
+                <FlexibleXYPlot>
                         <XAxis />
                         <YAxis / >
                         <VerticalGridLines />
                         <HorizontalGridLines / >
                     <VerticalBarSeries data={data} />
-                </XYPlot>
+                </FlexibleXYPlot>
                 </CardContent>
             </Card>
         {renderMobileMenu}
         </div>
     )
 };
-
 export default Chart;
 
 

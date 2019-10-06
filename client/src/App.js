@@ -6,6 +6,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 import Chart from './components/Chart';
+import StatusCard from './components/StatusCard';
 import './styles/index.css';
 import rootReducer from './redux/rootReducer';
 import appSaga from './redux/saga';
@@ -36,7 +37,10 @@ const InitApp = () => {
         dispatch({ type: 'FETCH_DATA_REQUEST'});
     },[]);
     return (
-        <Chart/ >
+        <div>
+            <StatusCard/>
+            <Chart/>
+        </div>
     );
 };
 
