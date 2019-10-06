@@ -107,7 +107,7 @@ const NavBar = () => {
                     <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        <img height="10%" src={Alfred} />
+                        <img height="60px" src={Alfred} />
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
