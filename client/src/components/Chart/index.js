@@ -16,13 +16,15 @@ import {
 const Chart = () => {
     const FlexibleXYPlot = makeVisFlexible(XYPlot);
     const feed = useSelector((state) => state.appData.feed);
+    // We don't have time stamps so I'm using an index
+    // because this is a collection not an array we have to maintain our own index
     let index=0;
     let prevEntry=null;
     const data = map(feed, (data) => {
         console.log(index);
         const newEntry = {
             x: index + 1,
-            y: data.c02 || prevEntry.c02,
+            y: data.c02 || prevEntry.c02, // if for some reason c02 is missing just use the prev data
         };
         prevEntry = data;
         index = index + 1;
