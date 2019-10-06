@@ -7,16 +7,14 @@
 
 #define FIREBASE_HOST "wwc-hackathon.firebaseio.com"
 #define FIREBASE_AUTH "D72HGIE1v0Oh5MkW7UY84LZH0eqqEiU42kEBkdU1"
-//#define WIFI_SSID "WWCode"
-//#define WIFI_PASSWORD "Hopper Lovelace Borg"
-#define WIFI_SSID "CenturyLink7957"
-#define WIFI_PASSWORD "k84db3c6cct6bd"
+#define WIFI_SSID "WWCode"
+#define WIFI_PASSWORD "Hopper Lovelace Borg"
 
 #define DHTPIN 2
 #define DHTTYPE DHT22
-#define HUMIDITY_THRESHOLD 75
-#define CO2_THRESHOLD 34
-#define WEIGHT_THRESHOLD 40
+#define HUMIDITY_THRESHOLD 56
+#define CO2_THRESHOLD 100
+#define WEIGHT_THRESHOLD 50
 #define FIREBASE_WAIT 2000
 #define READING_WAIT 10000
 
