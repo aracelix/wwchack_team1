@@ -1,4 +1,4 @@
-import { put, takeEvery, take } from 'redux-saga/effects';
+import { put, takeEvery, take, fork } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import { filter } from 'lodash';
 import firebase from '../firebase/config';
@@ -33,5 +33,5 @@ function* fetchDeviceData() {
 }
 
 export default function* appSaga() {
-  yield takeEvery('FETCH_DATA_REQUEST', fetchDeviceData)
+  yield fork(fetchDeviceData)
 }

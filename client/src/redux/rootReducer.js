@@ -1,5 +1,6 @@
 
 import { combineReducers } from 'redux';
+import { union } from 'lodash';
 
 const initialState = {
     data: [],
@@ -9,9 +10,10 @@ const initialState = {
 const appData = (state=initialState, action) => {
     switch (action.type) {
         case 'FETCH_DATA_SUCCESS':
+            const newData = union(state.data, action.data);
             return {
                 ...state,
-                data: [...state.data, ...action.data],
+                data: newData,
             }
         case 'FETCH_DATA_ERROR':
             return {
