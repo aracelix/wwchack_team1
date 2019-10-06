@@ -3,10 +3,6 @@ body {
     background-color: #F0F0F0;
 }
 
-.card {
-    margin: 15px;
-}
-
 .dashboard-card {
     height: 40vh;
     padding: 2vh 2vw 2.5vh 0;

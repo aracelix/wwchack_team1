@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
+import NavBar from './components/NavBar';
 import Chart from './components/Chart';
 import StatusCard from './components/StatusCard';
 import './styles/index.css';
@@ -38,6 +39,7 @@ const InitApp = () => {
     },[]);
     return (
         <div>
+            <NavBar />
             <StatusCard/>
             <Chart/>
         </div>

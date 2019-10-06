@@ -1,11 +1,15 @@
 import React from 'react';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import WarningIcon from '@material-ui/icons/WarningRounded';
-import CheckIcon from '@material-ui/icons/CheckRounded';
-
+import {
+    ExpansionPanel,
+    ExpansionPanelSummary,
+    ExpansionPanelDetails,
+    Box
+} from '@material-ui/core';
+import {
+    ExpandMore as ExpandMoreIcon,
+    WarningRounded as WarningIcon,
+    CheckRounded as CheckIcon
+} from '@material-ui/icons';
 
 
 const StatusCard = ({ type, errorType = 'warning' }) => {
@@ -35,20 +39,22 @@ const StatusCard = ({ type, errorType = 'warning' }) => {
     };
 
     return (
-        <ExpansionPanel style={accordionStyle}>
-            <ExpansionPanelSummary 
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="status-panel-content"
-                id="status-panel-header">
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        {errorType ? <WarningIcon /> : <CheckIcon/>}
-                        &nbsp;Status: <b>&nbsp;{title}</b>
-                    </div>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-                {message}
-            </ExpansionPanelDetails>
-        </ExpansionPanel>
+        <Box m={2}>
+            <ExpansionPanel style={accordionStyle}>
+                <ExpansionPanelSummary 
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="status-panel-content"
+                    id="status-panel-header">
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            {errorType ? <WarningIcon /> : <CheckIcon/>}
+                            &nbsp;Status: <b>&nbsp;{title}</b>
+                        </div>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    {message}
+                </ExpansionPanelDetails>
+            </ExpansionPanel>
+        </Box>
     )
 }
 
