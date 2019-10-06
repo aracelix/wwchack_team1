@@ -16,6 +16,7 @@ import {
     List as ListIcon
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import Alfred from './ALFRED_SMOKE_LOGO.jpg';
 
 const useStyles = makeStyles(theme => ({
     grow: {
@@ -106,7 +107,7 @@ const NavBar = () => {
                     <MenuIcon />
                     </IconButton>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        Alfred
+                        <img height="10%" src={Alfred} />
                     </Typography>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>

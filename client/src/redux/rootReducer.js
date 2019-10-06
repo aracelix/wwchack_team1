@@ -3,8 +3,13 @@ import { combineReducers } from 'redux';
 import { union } from 'lodash';
 
 const initialState = {
-    alerts: [],
-    feed: [],
+    alerts: {
+        active: false,
+        timeStamp: null,
+        activeAlerts: {},
+        allAlerts: {},
+    },
+    feed: {},
     error: null,
   }
   
@@ -13,7 +18,7 @@ const appData = (state=initialState, action) => {
         case 'FETCH_DATA_SUCCESS':
             return {
                 ...state,
-                alerts: action.data.alert,
+                alerts: action.data.alerts,
                 feed: action.data.feed,
             }
         case 'FETCH_DATA_ERROR':
