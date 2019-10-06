@@ -1,3 +1,15 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #F0F0F0;
+}
+
+.dashboard-card {
+    height: 40vh;
+    padding: 2vh 2vw 2.5vh 0;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
 }
