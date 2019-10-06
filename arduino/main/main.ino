@@ -7,8 +7,10 @@
 
 #define FIREBASE_HOST "wwc-hackathon.firebaseio.com"
 #define FIREBASE_AUTH "D72HGIE1v0Oh5MkW7UY84LZH0eqqEiU42kEBkdU1"
-#define WIFI_SSID "WWCode"
-#define WIFI_PASSWORD "Hopper Lovelace Borg"
+//#define WIFI_SSID "WWCode"
+//#define WIFI_PASSWORD "Hopper Lovelace Borg"
+#define WIFI_SSID "CenturyLink7957"
+#define WIFI_PASSWORD "k84db3c6cct6bd"
 
 #define DHTPIN 2
 #define DHTTYPE DHT22
@@ -45,19 +47,16 @@ void loop() {
   float humidityReading = checkHumiditySensor();
   float weightReading = checkWeightSensor();
 
-  const int capacity = JSON_OBJECT_SIZE(3);
+  const int capacity = JSON_OBJECT_SIZE(4);
   StaticJsonBuffer<capacity> dataBuffer;
   JsonObject& data = dataBuffer.createObject();
+  //JsonObject& ts = data.createNestedObject("timestamp");
   data["c02"] = gasReading;
   data["humidity"] = humidityReading;
   data["weight"] = weightReading;
+  //ts[".sv"] = "timestamp";
 
   String id = Firebase.push("data/feed", data);
- 
-  //String path = "data/feed/" + id;
-  //Firebase.setFloat(path + "/co2", gasReading);
-  //Firebase.setFloat(path + "/humidity", humidityReading);
-  //Firebase.setFloat(path + "/weight", weightReading);
   
   Serial.println();
   delay(READING_WAIT);
@@ -125,11 +124,13 @@ float checkWeightSensor() {
 }
 
 void sendAlert(String type, float value) {
-  const int capacity = JSON_OBJECT_SIZE(2);
+  const int capacity = JSON_OBJECT_SIZE(3);
   StaticJsonBuffer<capacity> dataBuffer;
   JsonObject& data = dataBuffer.createObject();
+  //JsonObject& ts = data.createNestedObject("timestamp");
   data["type"] = type;
   data["value"] = value;
+  //ts[".sv"] = "timestamp";
 
   String id = Firebase.push("data/alert", data);
   
