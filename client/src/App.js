@@ -4,6 +4,8 @@ import createSagaMiddleware from 'redux-saga'
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
 
 import NavBar from './components/NavBar';
 import Chart from './components/Chart';
@@ -33,6 +35,7 @@ const store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(
 sagaMiddleware.run(appSaga);
 
 const InitApp = () => {
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch({ type: 'FETCH_DATA_REQUEST'});
@@ -40,6 +43,7 @@ const InitApp = () => {
     return (
         <div>
             <NavBar />
+            {!isMobile ? <Box p={3.5}/> : null}
             <StatusCard/>
             <Chart/>
         </div>

@@ -34,7 +34,6 @@ const StatusCard = ({ type, errorType = 'warning' }) => {
     }
 
     const accordionStyle = {
-        margin: '0 15px',
         backgroundColor: messageBg
     };
 
