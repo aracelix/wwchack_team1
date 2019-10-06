@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
 import { Provider, useDispatch } from 'react-redux';
 import createSagaMiddleware from 'redux-saga'
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 import Chart from './components/Chart';
 
 import './styles/index.css';
-import appDataReducer from './redux/rootReducer';
+import rootReducer from './redux/rootReducer';
 import appSaga from './redux/saga';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(appDataReducer, applyMiddleware(sagaMiddleware));
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(
+    applyMiddleware(sagaMiddleware)
+));
 sagaMiddleware.run(appSaga);
 
 const InitApp = () => {

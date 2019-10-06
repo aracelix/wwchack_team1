@@ -52,7 +52,6 @@ const Chart = () => {
             y: 0
         }
     ];
-
     return (
         <Card>
             <CardContent>

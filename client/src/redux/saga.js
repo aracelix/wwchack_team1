@@ -11,7 +11,6 @@ function* fetchDeviceData() {
                 if (snapshot.exists()) {
                     const response = snapshot.val().data;
                     const data = filter(response, (entry) => typeof entry === 'object');
-                    console.log(data);
                     emiter({ data: data || [] });
                 } else {
                     emiter({ data: [] });
@@ -26,7 +25,6 @@ function* fetchDeviceData() {
         while (true) {
             const { data } = yield take(channel);
                 // #4
-            console.log('emitter', data);
            yield put({ type: 'FETCH_DATA_SUCCESS', data, });
         }
     } catch (error) {

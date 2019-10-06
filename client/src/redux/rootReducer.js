@@ -1,15 +1,14 @@
 
-
+import { combineReducers } from 'redux';
 
 const initialState = {
     data: [],
     error: null,
   }
   
-const appData = (state, action) => {
+const appData = (state=initialState, action) => {
     switch (action.type) {
         case 'FETCH_DATA_SUCCESS':
-            console.log(action)
             return {
                 ...state,
                 data: [...state.data, ...action.data],
@@ -24,4 +23,8 @@ const appData = (state, action) => {
     }
 };
 
-export default appData;
+const rootReducer = combineReducers({
+    appData
+});
+
+export default rootReducer;
