@@ -12,13 +12,13 @@ import {
 } from '@material-ui/icons';
 
 
-const StatusCard = ({ type, errorType = 'warning' }) => {
+const StatusCard = ({ type, errorType, alerts }) => {
     let title, message, messageBg;
-
+    
     switch (errorType) {
         case 'alert':
             title = 'Alert!';
-            message = `Your ${type} levels have the normal range.`;
+            message = `Oops looks like there might be some dirty recyclables in your bin!`;
             messageBg = '#FBBDB8';
             break;
             case 'warning':
@@ -29,7 +29,7 @@ const StatusCard = ({ type, errorType = 'warning' }) => {
         default:
             title = 'Healthy';
             message = 'All variables are within the normal range. Great job!';
-            messageBg = null;
+            messageBg = '#329944';
             break;
     }
 
