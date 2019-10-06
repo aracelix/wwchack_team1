@@ -8,12 +8,11 @@ const initialState = {
   
 const appData = (state, action) => {
     switch (action.type) {
-        case 'FETCH_DATA_REQUEST':
-            return initialState
         case 'FETCH_DATA_SUCCESS':
+            console.log(action)
             return {
                 ...state,
-                data: state.data.concat(action.data),
+                data: [...state.data, ...action.data],
             }
         case 'FETCH_DATA_ERROR':
             return {

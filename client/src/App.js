@@ -11,7 +11,7 @@ import appSaga from './redux/saga';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(appDataReducer, applyMiddleware(sagaMiddleware));
-
+sagaMiddleware.run(appSaga);
 
 const InitApp = () => {
     const dispatch = useDispatch();
@@ -25,6 +25,5 @@ const InitApp = () => {
 
 const App = () => <Provider store={store}><InitApp /></Provider>;
 
-sagaMiddleware.run(appSaga);
 
 export default App;
