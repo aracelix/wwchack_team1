@@ -1,4 +1,6 @@
 import React from 'react';
+import map from 'lodash/map';
+import { useSelector } from 'react-redux';
 import { Card, CardContent,Box } from '@material-ui/core';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
@@ -13,57 +15,28 @@ import {
 
 const Chart = () => {
     const FlexibleXYPlot = makeVisFlexible(XYPlot);
-    const data = [{
-            x: 0,
-            y: 8
-        },
-        {
-            x: 1,
-            y: 5
-        },
-        {
-            x: 2,
-            y: 4
-        },
-        {
-            x: 3,
-            y: 9
-        },
-        {
-            x: 4,
-            y: 1
-        },
-        {
-            x: 5,
-            y: 7
-        },
-        {
-            x: 6,
-            y: 6
-        },
-        {
-            x: 7,
-            y: 3
-        },
-        {
-            x: 8,
-            y: 2
-        },
-        {
-            x: 9,
-            y: 0
-        }
-    ];
-
+    const feed = useSelector((state) => state.appData.feed);
+    let index=0;
+    let prevEntry=null;
+    const data = map(feed, (data) => {
+        console.log(index);
+        const newEntry = {
+            x: index + 1,
+            y: data.c02 || prevEntry.c02,
+        };
+        prevEntry = data;
+        index = index + 1;
+        return newEntry;
+    });
     return (
         <Box m={2}>
             <Card className="card dashboard-card">
                 <CardContent>
                 <FlexibleXYPlot>
                         <XAxis />
-                        <YAxis / >
+                        <YAxis />
                         <VerticalGridLines />
-                        <HorizontalGridLines / >
+                        <HorizontalGridLines />
                         <VerticalBarSeries data={data} />
                 </FlexibleXYPlot>
                 </CardContent>

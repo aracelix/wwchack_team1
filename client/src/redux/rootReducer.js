@@ -13,8 +13,8 @@ const appData = (state=initialState, action) => {
         case 'FETCH_DATA_SUCCESS':
             return {
                 ...state,
-                alerts: action.alert,
-                feed: action.feed,
+                alerts: action.data.alert,
+                feed: action.data.feed,
             }
         case 'FETCH_DATA_ERROR':
             return {
