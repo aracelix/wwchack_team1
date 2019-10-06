@@ -1,23 +1,30 @@
-import React, { Component } from 'react';
-import firebase from './firebase/config';
+import React, { useEffect } from 'react';
+import { Provider, useDispatch } from 'react-redux';
+import createSagaMiddleware from 'redux-saga'
+import { createStore, applyMiddleware } from 'redux';
 
 import Chart from './components/Chart';
 
 import './styles/index.css';
+import appDataReducer from './redux/rootReducer';
+import appSaga from './redux/saga';
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-        // firebase.initializeApp();
-    }
-    componentDidMount() {
-        console.log(firebase.auth().currentUser);
-        const database = firebase.database();
-        database.ref('/').once('value').then(snapshot => console.log(snapshot.val().data)).catch(e => console.log(e));
-    }
-    render() {
-        return (
-            <Chart/ >
-        );
-    }
-}
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(appDataReducer, applyMiddleware(sagaMiddleware));
+
+
+const InitApp = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch({ type: 'FETCH_DATA_REQUEST'});
+    },[]);
+    return (
+        <Chart/ >
+    );
+};
+
+const App = () => <Provider store={store}><InitApp /></Provider>;
+
+sagaMiddleware.run(appSaga);
+
+export default App;
