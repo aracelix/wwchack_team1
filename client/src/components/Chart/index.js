@@ -3,6 +3,7 @@ import { Card, CardContent } from '@material-ui/core';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
     XYPlot,
+    makeWidthFlexible,
     VerticalBarSeries,
     VerticalGridLines,
     HorizontalGridLines,
@@ -53,19 +54,23 @@ const Chart = () => {
         }
     ];
 
+    const FlexibleXYPlot = makeWidthFlexible(XYPlot);
+
     return (
-        <Card>
+        <Card className="dashboard-card">
             <CardContent>
-               <XYPlot height={300} width={300}>
+               <FlexibleXYPlot height={300}>
                     <XAxis />
                     <YAxis / >
                     <VerticalGridLines />
                     <HorizontalGridLines / >
                    <VerticalBarSeries data={data} />
-               </XYPlot>
+               </ FlexibleXYPlot>
             </CardContent>
         </Card>
     )
 };
 
 export default Chart;
+
+
