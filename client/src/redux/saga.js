@@ -9,9 +9,8 @@ function* fetchDeviceData() {
         const channel = new eventChannel(emiter => {
             const listener = firebase.database().ref("/").on("value", snapshot => {
                 if (snapshot.exists()) {
-                    const response = snapshot.val().data;
-                    const data = filter(response, (entry) => typeof entry === 'object');
-                    emiter({ data: data || [] });
+                    const { alert, feed } = snapshot.val().data;
+                    emiter({ data: { alert, feed } || [] });
                 } else {
                     emiter({ data: [] });
                 }

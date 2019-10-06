@@ -3,17 +3,18 @@ import { combineReducers } from 'redux';
 import { union } from 'lodash';
 
 const initialState = {
-    data: [],
+    alerts: [],
+    feed: [],
     error: null,
   }
   
 const appData = (state=initialState, action) => {
     switch (action.type) {
         case 'FETCH_DATA_SUCCESS':
-            const newData = union(state.data, action.data);
             return {
                 ...state,
-                data: newData,
+                alerts: action.alert,
+                feed: action.feed,
             }
         case 'FETCH_DATA_ERROR':
             return {
