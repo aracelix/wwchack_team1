@@ -5,7 +5,7 @@ import StatusCard from '../StatusCard';
 
 const Alert = () => {
     const alerts = useSelector((state) => state.appData.alerts);
-
+    console.log('Alerts', alerts.active)
     return (
         alerts.active ?
         <StatusCard errorType='alert' alerts={alerts.activeAlerts}/>
